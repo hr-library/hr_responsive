@@ -893,6 +893,7 @@ class _MenuItem extends StatelessWidget {
                         else
                           Text(
                             label,
+                            style: theme.textTheme.bodyText1,
                           )
                       ],
                     ),

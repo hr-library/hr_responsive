@@ -46,19 +46,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return ResponsiveScaffold(
         menuLeadingSubtitle: const Text('hr'),
+        menuLeadingTitle: const Text(
+          'hr@gmail.com',
+        ),
         menuLeadingAvatar: const Icon(
           Icons.person,
           size: 30,
         ),
         menuItems: DrawerMenu.menuItems,
         menuTitle: const Text('My app'),
-        extendBodyBehindAppBar: false,
-        extendBody: false,
         title: const Text(
-          'title',
-        ),
-        menuLeadingTitle: const Text(
-          'hr@gmail.com',
+          'title'
         ),
         actions: const [],
         body: body());
