@@ -28,7 +28,7 @@ const Duration _kMenuAnimationDuration = Duration(milliseconds: 246);
 @immutable
 class ResponsiveMenuItems {
   const ResponsiveMenuItems({
-    this.label = '',
+    required this.label,
     this.icon = Icons.info,
     this.onTap,
     this.showDivider = false,
@@ -41,7 +41,7 @@ class ResponsiveMenuItems {
         _tooltipSecondary = tooltipSecondary,
         _iconSecondary = iconSecondary;
 
-  final String label;
+  final Widget label;
   final IconData icon;
   final String? _tooltip;
   final String? _labelSecondary;
@@ -50,8 +50,8 @@ class ResponsiveMenuItems {
   final GestureTapCallback? onTap;
   final bool showDivider;
 
-  String get tooltip => _tooltip ?? label;
-  String get labelSecondary => _labelSecondary ?? label;
+  String get tooltip => _tooltip ?? '';
+  String get labelSecondary => _labelSecondary ?? '';
   String get tooltipSecondary => _tooltipSecondary ?? tooltip;
   IconData get iconSecondary => _iconSecondary ?? icon;
 }
@@ -761,10 +761,7 @@ class _AppMenuState extends State<_AppMenu> {
                                       ResponsiveMenuItemIconState.primary
                                   ? widget.menuItems[i].icon
                                   : widget.menuItems[i].iconSecondary,
-                              label: widget.menuItemsIconState[i] ==
-                                      ResponsiveMenuItemIconState.primary
-                                  ? widget.menuItems[i].label
-                                  : widget.menuItems[i].labelSecondary,
+                              label: widget.menuItems[i].label,
                               tooltip: widget.menuItemsIconState[i] ==
                                       ResponsiveMenuItemIconState.primary
                                   ? widget.menuItems[i].tooltip
@@ -809,7 +806,7 @@ class _MenuItem extends StatelessWidget {
   final VoidCallback? onTap;
   final bool selected;
   final IconData icon;
-  final String label;
+  final Widget label;
   final String tooltip;
   final bool showDivider;
   final double railWidth;
@@ -891,10 +888,7 @@ class _MenuItem extends StatelessWidget {
                         if (width < railWidth + 10)
                           const SizedBox.shrink()
                         else
-                          Text(
-                            label,
-                            style: theme.textTheme.bodyText1,
-                          )
+                          label,
                       ],
                     ),
                   ),
