@@ -18,7 +18,7 @@ const double _kRailWidth = 66;
 // ResponsiveScaffold constructor.
 const double _kBreakpointShowFullMenu = 1350;
 
-const double _phoneWidthBreakpoint = 600;
+const double _phoneWidthBreakpoint = 450;
 
 // Menu animation duration. This constant is the same value that
 // Flutter SDK uses for its Drawer open/close animation
@@ -494,6 +494,7 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
     // we are just going to call that isDesktop, but it could be large tablet
     // or tablet in landscape, or even phone in landscape.
     final bool isDesktop = media.size.width >= widget.breakpointShowFullMenu;
+    final bool isPhone = media.size.width < _phoneWidthBreakpoint;
     // Secret sauce for a simple auto responsive & toggleable drawer-rail-menu.
     if (!isDesktop) _activeMenuWidth = widget.railWidth;
     if (!isDesktop && _isMenuClosed) _activeMenuWidth = 0;
@@ -605,7 +606,11 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
                     // rail visible:
                     Future<void>.delayed(_kMenuAnimationDuration, () {
                       setState(() {
-                        _isMenuClosed = false;
+                        if (isPhone) {
+                          _isMenuClosed = true;
+                        } else {
+                          _isMenuClosed = false;
+                        }
                       });
                     });
                     // If we do this instead they both animate at the same time:

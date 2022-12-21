@@ -4,23 +4,23 @@ import 'package:hr_responsive/hr_responsive.dart';
 class DrawerMenu {
   static List<ResponsiveMenuItems> menuItems = <ResponsiveMenuItems>[
     ResponsiveMenuItems(
-      label: Text('Addition'),
+      label: const Text('Addition'),
       icon: Icons.add,
       showDivider: true,
       onTap: () {},
     ),
     ResponsiveMenuItems(
-        label: Text('Soustraction'),
+        label: const Text('Soustraction'),
         icon: Icons.add,
         showDivider: false,
         onTap: () {}),
     ResponsiveMenuItems(
-        label: Text('Multiplication'),
+        label: const Text('Multiplication'),
         icon: Icons.star,
         showDivider: false,
         onTap: () {}),
     ResponsiveMenuItems(
-      label: Text('Division'),
+      label: const Text('Division'),
       icon: Icons.sort,
       showDivider: false,
       onTap: () {},
