@@ -529,7 +529,7 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
                   // Otherwise it jumps into visibility when the menu rail
                   // starts its closing animation, and heading jumps to right.
                   if (_isMenuClosed) {
-                    _menuDoneClosing = true;
+                    _menuDoneClosing = false;
                   } else {
                     _menuDoneClosing = false;
                   }
@@ -579,7 +579,7 @@ class _ResponsiveScaffoldState extends State<ResponsiveScaffold> {
               // Some logic to show the implicit menu button on AppBar when
               // there is no rail or menu.
               automaticallyImplyLeading:
-                  !isDesktop && _isMenuClosed && _menuDoneClosing,
+                  !isDesktop && _isMenuClosed && !_menuDoneClosing,
               backgroundColor: Colors.transparent,
             ),
             // The menu content when used in the Drawer.
